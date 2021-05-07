@@ -1,4 +1,5 @@
 import React from 'react';
+import './assets/style/custom.scss'
 import Home from './pages/home';
 import Team from './pages/team';
 import { Header, Footer, Nav, Overlay } from './components/'
@@ -14,6 +15,7 @@ import Register from './pages/register';
 import Cooperate from './pages/cooperate';
 import Profile from './pages/profile';
 
+
 function App() {
   return (
     <div className="App">
@@ -28,11 +30,11 @@ function App() {
       {/* <Coin /> */}
       {/* <Email /> */}
       {/* <Error /> */}
-      {/* <Register /> */}
+      <Register />
       {/* <Cooperate /> */}
       {/* <Project /> */}
       {/* <Profile /> */}
-      <Home />
+      {/* <Home /> */}
       {/* <Team /> */}
 
       <Footer />
