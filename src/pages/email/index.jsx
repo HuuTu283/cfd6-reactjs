@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom'
+import useDelayLink from '../../hook/useDelayLink'
 
 
 export default function Email() {
+    let delayLink = useDelayLink()
     return (
         <div className="container">
             <div className="emailform" style={{ backgroundColor: '#f4f7f6', maxWidth: '590px', margin: '20px auto', fontFamily: 'arial', lineHeight: '24px' }}>
@@ -10,9 +13,9 @@ export default function Email() {
                         <h2>Đăng ký khóa học tại CFD.</h2>
                         <p>Chào mừng tân binh <strong>Trần Nghĩa</strong>,</p>
                         <p>
-                            Bạn đã đăng ký khóa học <a href="#" target="_blank" style={{ textDecoration: 'none', color: '#00afab' }}><strong>CFD2 Căn Bản</strong></a> tại <strong>CFD</strong> thành công, chúng tôi sẽ chủ động liên hệ thông qua số điện thoại của bạn.
+                            Bạn đã đăng ký khóa học <Link onClick={delayLink} to="/khoa-hoc" target="_blank" style={{ textDecoration: 'none', color: '#00afab' }}><strong>CFD2 Căn Bản</strong></Link> tại <strong>CFD</strong> thành công, chúng tôi sẽ chủ động liên hệ thông qua số điện thoại của bạn.
               </p>
-                        <a href="#" target="_blank" className="btn" style={{ backgroundColor: '#00afab', borderRadius: '50px', padding: '10px 20px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', textDecoration: 'none', textTransform: 'uppercase', fontSize: '14px', marginTop: '20px' }}>Trang chủ CFD</a>
+                        <Link onClick={delayLink} to="/" target="_blank" className="btn" style={{ backgroundColor: '#00afab', borderRadius: '50px', padding: '10px 20px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', textDecoration: 'none', textTransform: 'uppercase', fontSize: '14px', marginTop: '20px' }}>Trang chủ CFD</Link>
                     </div>
                 </div>
                 <div className="bottom" style={{ fontSize: '13px', background: '#ddd', padding: '30px 50px', color: '#767676' }}>

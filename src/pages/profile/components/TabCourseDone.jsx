@@ -9,16 +9,16 @@ export default function TabCourseDone() {
                 <CourseDone
                     title="Furnitown"
                     description="Dự án hoàn thành trong khóa CFD1 Offline của CFD Team."
-                    image="img/img8.png"
-                    ava_teacher="img/Intersect (1).png"
+                    image="/img/img8.png"
+                    ava_teacher="/img/Intersect (1).png"
                     name_teacher="Trần Nghĩa"
                 />
 
                 <CourseDone
                     title="GboxMB"
                     description="Dự án hoàn thành trong khóa CFD1 Offline của CFD Team."
-                    image="img/img8.png"
-                    ava_teacher="img/Intersect (1).png"
+                    image="/img/img8.png"
+                    ava_teacher="/img/Intersect (1).png"
                     name_teacher="Trần Nghĩa"
                 />
             </div>

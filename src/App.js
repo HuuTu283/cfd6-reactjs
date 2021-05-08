@@ -15,33 +15,38 @@ import Register from './pages/register';
 import Cooperate from './pages/cooperate';
 import Profile from './pages/profile';
 
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <Overlay />
 
-      {/* <Course /> */}
-      {/* <CourseDetail /> */}
-      {/* <Faq /> */}
-      {/* <Payment /> */}
-      {/* <Coin /> */}
-      {/* <Email /> */}
-      {/* <Error /> */}
-      <Register />
-      {/* <Cooperate /> */}
-      {/* <Project /> */}
-      {/* <Profile /> */}
-      {/* <Home /> */}
-      {/* <Team /> */}
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Header />
+                <Nav />
+                <Overlay />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/team" component={Team} />
+                    <Route path="/profile" component={Profile} />
+                    <Route path="/du-an" component={Project} />
+                    <Route path="/lien-he" component={Cooperate} />
+                    <Route path="/dang-ky" component={Register} />
+                    <Route path="/email" component={Email} />
+                    <Route path="/coin" component={Coin} />
+                    <Route path="/thanh-toan" component={Payment} />
+                    <Route path="/faq" component={Faq} />
+                    <Route path="/khoa-hoc/:slug" component={CourseDetail} />
+                    <Route path="/khoa-hoc" component={Course} />
+                    <Route component={Error} />
+                </Switch>
+                <Footer />
+            </BrowserRouter>
 
-      <Footer />
-
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;

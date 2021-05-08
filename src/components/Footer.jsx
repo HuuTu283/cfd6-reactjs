@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom'
+import useDelayLink from '../hook/useDelayLink'
+
 export function Footer() {
+    let delayLink = useDelayLink()
     return (
         <footer id="footer">
             <div className="container">
@@ -13,31 +17,31 @@ export function Footer() {
                         </p>
                         <p className="phone">(+84) 98 9596 913</p>
                         <div className="social">
-                            <a className="fb" href="#">
+                            <Link onClick={delayLink} className="fb" to="/">
                                 {/* <img src="img/icon-fb.svg" alt=""> */}
-                            </a>
-                            <a className="gmail" href="#">
+                            </Link>
+                            <Link onClick={delayLink} className="gmail" to="/">
                                 {/* <img src="img/icon-gmail.svg" alt=""> */}
-                            </a>
-                            <a className="skype" href="#">
+                            </Link>
+                            <Link onClick={delayLink} className="skype" to="/">
                                 {/* <img src="img/icon-skype.svg" alt=""> */}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="right">
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Trang chủ</a>
+                                    <Link onClick={delayLink} to="/">Trang chủ</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Khóa học</a>
+                                    <Link onClick={delayLink} to="/khoa-hoc">Khóa học</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Thanh toán</a>
+                                    <Link onClick={delayLink} to="/thanh-toan">Thanh toán</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Điều khoản</a>
+                                    <Link onClick={delayLink} to="/faq">Điều khoản</Link>
                                 </li>
                             </ul>
                         </nav>

@@ -8,13 +8,14 @@ import TabCourse from "./components/TabCourse"
 import TabCourseDone from "./components/TabCourseDone"
 import TabPayment from "./components/TabPayment"
 
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 export default function Profile() {
-    let [tab, setTab] = useState(0)
-    function SetTab(e, index) {
-        e.preventDefault();
-        setTab(index);
-    }
+    let { path } = useRouteMatch()
+
+
+
     return (
         <main className="profile" id="main">
             <section>
@@ -29,24 +30,21 @@ export default function Profile() {
                 <div className="container">
                     <div className="tab">
                         <div className="tab-title">
-                            <a href="#" className={tab === 0 ? "active" : ""} onClick={(e) => SetTab(e, 0)}>Thông tin tài khoản</a>
-                            <a href="#" className={tab === 1 ? "active" : ""} onClick={(e) => SetTab(e, 1)}>Khóa học của bạn</a>
-                            <a href="#" className={tab === 2 ? "active" : ""} onClick={(e) => SetTab(e, 2)}>Dự án đã làm</a>
-                            <a href="#" className={tab === 3 ? "active" : ""} onClick={(e) => SetTab(e, 3)}>Lịch sử thanh toán</a>
-                            <a href="#" className={tab === 4 ? "active" : ""} onClick={(e) => SetTab(e, 4)}>Quản lý COIN của tôi</a>
+                            <NavLink exact to={`${path}`} >Thông tin tài khoản</NavLink>
+                            <NavLink to={`${path}/khoa-hoc-cua-ban`} >Khóa học của bạn</NavLink>
+                            <NavLink to={`${path}/du-an`} >Dự án đã làm</NavLink>
+                            <NavLink to={`${path}/payment`} >Lịch sử thanh toán</NavLink>
+                            <NavLink to={`${path}/coin`} >Quản lý COIN của tôi</NavLink>
                         </div>
 
-
-
                         <div className="tab-content">
-                            {
-                                tab === 0 ? <TabInfo /> :
-                                    tab === 1 ? <TabCourse /> :
-                                        tab === 2 ? <TabCourseDone /> :
-                                            tab === 3 ? <TabPayment /> :
-                                                <TabCoin />
-
-                            }
+                            <Switch>
+                                <Route exact path={`${path}`} component={TabInfo} />
+                                <Route path={`${path}/khoa-hoc-cua-ban`} component={TabCourse} />
+                                <Route path={`${path}/du-an`} component={TabCourseDone} />
+                                <Route path={`${path}/coin`} component={TabCoin} />
+                                <Route path={`${path}/payment`} component={TabPayment} />
+                            </Switch>
 
                         </div>
                     </div>

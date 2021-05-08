@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 
 export default function TestimonialItem({ name, title, content, date }) {
@@ -14,7 +15,7 @@ export default function TestimonialItem({ name, title, content, date }) {
                 {content}
             </div>
             <div className="bottom">
-                <a href="#" target="_blank"><img src="/img/facebook.svg" alt="" /></a>
+                <Link to="#" target="_blank"><img src="/img/facebook.svg" alt="" /></Link>
                 <span>{date}</span>
             </div>
         </>

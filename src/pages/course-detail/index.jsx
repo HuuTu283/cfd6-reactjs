@@ -1,3 +1,6 @@
+import React from 'react'
+
+import { useParams } from "react-router-dom"
 import { CourseItem } from "../../components"
 import Accordion from "./components/Accordion"
 import Banner from "./components/Banner"
@@ -8,6 +11,9 @@ import UserRegister from './components/UserRegister';
 
 
 export default function CourseDetail() {
+
+    let { slug } = useParams()
+
     return (
         <main className="course-detail" id="main">
             <Banner
@@ -23,7 +29,7 @@ export default function CourseDetail() {
               your apps.</p>
                     <h2 className="title">giới thiệu về khóa học</h2>
                     <div className="cover">
-                        <img src="img/course-detail-img.png" alt="" />
+                        <img src="/img/course-detail-img.png" alt="" />
                     </div>
                     <h3 className="title">nội dung khóa học</h3>
                     <Accordion

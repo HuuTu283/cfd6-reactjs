@@ -1,8 +1,16 @@
+import { Link } from "react-router-dom"
+import useDelayLink from '../hook/useDelayLink'
+
 export function Header() {
+
+    let delayLink = useDelayLink()
+    function toggleMenu() {
+        document.body.classList.toggle('menu-is-show')
+    }
     return (
         <header id="header">
             <div className="wrap">
-                <div className="menu-hambeger">
+                <div className="menu-hambeger" onClick={toggleMenu}>
                     <div className="button">
                         <span />
                         <span />
@@ -10,26 +18,26 @@ export function Header() {
                     </div>
                     <span className="text">menu</span>
                 </div>
-                <a href="#" className="logo">
-                    <img src="img/logo.svg" alt="" />
+                <Link to="/" className="logo" onClick={delayLink}>
+                    <img src="/img/logo.svg" alt="" />
                     <h1>CFD</h1>
-                </a>
+                </Link>
                 <div className="right">
                     <div className="have-login">
                         <div className="account">
-                            <a href="#" className="info">
+                            <Link to="/profile" className="info" onClick={delayLink}>
                                 <div className="name">Trần Lê Trọng Nghĩa</div>
                                 <div className="avatar">
                                     <img src="img/avt.png" alt="" />
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="hamberger">
                         </div>
                         <div className="sub">
-                            <a href="#">Khóa học của tôi</a>
-                            <a href="#">Thông tin tài khoản</a>
-                            <a href="#">Đăng xuất</a>
+                            <Link onClick={delayLink} to="/profile/khoa-hoc-cua-ban">Khóa học của tôi </Link>
+                            <Link onClick={delayLink} to="/profile">Thông tin tài khoản</Link>
+                            <Link onClick={delayLink} to="/">Đăng xuất</Link>
                         </div>
                     </div>
                     {/* <div class="not-login bg-none">

@@ -1,16 +1,19 @@
+import { Link } from 'react-router-dom'
+import useDelayLink from '../../../hook/useDelayLink'
 
 
 export default function CourseDone({ title, description, image, ava_teacher, name_teacher }) {
+    let delayLink = useDelayLink()
     return (
         <div className="col-md-6 course">
             <div className="wrap">
-                <a href="#" className="cover">
+                <Link onClick={delayLink} to="/du-an" className="cover">
                     <img src={image} alt="" />
-                </a>
+                </Link>
                 <div className="info">
-                    <a href="#" className="name">
+                    <Link onClick={delayLink} to="/du-an" className="name">
                         {title}
-                    </a>
+                    </Link>
                     <p className="des">
                         {description}
                     </p>
@@ -22,7 +25,7 @@ export default function CourseDone({ title, description, image, ava_teacher, nam
                         </div>
                         <div className="name">{name_teacher}</div>
                     </div>
-                    <div className="register-btn">Website</div>
+                    <Link onClick={delayLink} to="/du-an" className="register-btn">Website</Link>
                 </div>
             </div>
         </div>

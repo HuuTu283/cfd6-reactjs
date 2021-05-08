@@ -1,8 +1,14 @@
+
+import { Link } from 'react-router-dom'
+import useDelayLink from '../hook/useDelayLink'
+
+
 export function CourseItem({ title, description, image, ava_teacher, name_teacher, status }) {
+    let delayLink = useDelayLink()
     return (
-        <div className="col-md-4 course">
+        <div div className="col-md-4 course" >
             <div className="wrap">
-                <a className="cover" href="#">
+                <Link className="cover" to="/">
                     <img src={image} alt="" />
                     {
                         status === 'da-ket-thuc' ? <span className="badge b1">Đã kết thúc</span> :
@@ -16,21 +22,21 @@ export function CourseItem({ title, description, image, ava_teacher, name_teache
                     <div className="hover">
                         <div className="top">
                             <div className="user">
-                                <img src="img/icon-user-white.svg" alt="" />
+                                <img src="/img/icon-user-white.svg" alt="" />
                           12</div>
                             <div className="heart">
-                                <img src="img/icon-heart.svg" alt="" /> 100
+                                <img src="/img/icon-heart.svg" alt="" /> 100
                         </div>
                         </div>
                         <div className="share">
-                            <img src="img/icon-viewmore.svg" alt="" />
+                            <img src="/img/icon-viewmore.svg" alt="" />
                         </div>
                     </div>
-                </a>
+                </Link>
                 <div className="info">
-                    <a className="name" href="#">
+                    <Link className="name" to="/">
                         {title}
-                    </a>
+                    </Link>
                     <p className="des">
                         {description}
                     </p>
@@ -42,9 +48,9 @@ export function CourseItem({ title, description, image, ava_teacher, name_teache
                         </div>
                         <div className="name">{name_teacher}</div>
                     </div>
-                    <div className="register-btn">Đăng Ký</div>
+                    <Link onClick={delayLink} to="/dang-ky" className="register-btn">Đăng Ký</Link>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

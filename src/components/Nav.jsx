@@ -1,26 +1,37 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
+import useDelayLink from '../hook/useDelayLink'
+
+
 export function Nav() {
-    return (
+
+    let delayLink = useDelayLink()
+
+
+    return ReactDOM.createPortal(
         <nav className="nav">
             <ul>
                 <li className="li_login">
-                    <a href="#">Đăng ký / Đăng nhập</a>
+                    <Link to="#">Đăng ký / Đăng nhập</Link>
                 </li>
                 <li className="active">
-                    <a href="#">Trang chủ</a>
+                    <Link onClick={delayLink} to="/">Trang chủ</Link>
                 </li>
                 <li>
-                    <a href="#">CFD Team</a>
+                    <Link onClick={delayLink} to="/team">CFD Team</Link>
                 </li>
                 <li>
-                    <a href="#">Khóa Học</a>
+                    <Link onClick={delayLink} to="/khoa-hoc">Khóa Học</Link>
                 </li>
                 <li>
-                    <a href="#">Dự Án</a>
+                    <Link onClick={delayLink} to="/du-an">Dự Án</Link>
                 </li>
                 <li>
-                    <a href="#">Liên hệ</a>
+                    <Link onClick={delayLink} to="/lien-he">Liên hệ</Link>
                 </li>
             </ul>
-        </nav>
+        </nav>,
+        document.body
     )
 }
