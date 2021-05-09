@@ -2,7 +2,7 @@ import React from 'react';
 import './assets/style/custom.scss'
 import Home from './pages/home';
 import Team from './pages/team';
-import { Header, Footer, Nav, Overlay } from './components/'
+import { Header, Footer } from './components/'
 import Project from './pages/project';
 import Course from './pages/course';
 import CourseDetail from './pages/course-detail';
@@ -25,8 +25,6 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Header />
-                <Nav />
-                <Overlay />
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/team" component={Team} />
