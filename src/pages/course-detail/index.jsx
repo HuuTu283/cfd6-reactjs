@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { useParams } from "react-router-dom"
+
 import { CourseItem } from "../../components"
 import Accordion from "./components/Accordion"
 import Banner from "./components/Banner"

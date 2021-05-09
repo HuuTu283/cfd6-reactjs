@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import useDelayLink from '../hook/useDelayLink'
 
 export function Header() {
@@ -51,22 +51,23 @@ export function Header() {
             <nav className="nav">
                 <ul>
                     <li className="li_login">
-                        <Link to="#">Đăng ký / Đăng nhập</Link>
-                    </li>
-                    <li className="active">
-                        <Link onClick={delayLink} to="/">Trang chủ</Link>
+                        <Link to="#">Đăng ký</Link>
+                        <Link to="#">Đăng nhập</Link>
                     </li>
                     <li>
-                        <Link onClick={delayLink} to="/team">CFD Team</Link>
+                        <NavLink exact onClick={delayLink} to="/">Trang chủ</NavLink>
                     </li>
                     <li>
-                        <Link onClick={delayLink} to="/khoa-hoc">Khóa Học</Link>
+                        <NavLink onClick={delayLink} to="/team">CFD Team</NavLink>
                     </li>
                     <li>
-                        <Link onClick={delayLink} to="/du-an">Dự Án</Link>
+                        <NavLink onClick={delayLink} to="/khoa-hoc">Khóa Học</NavLink>
                     </li>
                     <li>
-                        <Link onClick={delayLink} to="/lien-he">Liên hệ</Link>
+                        <NavLink onClick={delayLink} to="/du-an">Dự Án</NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={delayLink} to="/lien-he">Liên hệ</NavLink>
                     </li>
                 </ul>
             </nav>
