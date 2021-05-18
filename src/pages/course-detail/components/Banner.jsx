@@ -15,7 +15,7 @@ export default function Banner({ title, date, time, money }) {
                 <div className="container">
                     <div className="video">
                         <div className="icon">
-                            <img src="img/play-icon-white.png" alt="" />
+                            <img src="/img/play-icon-white.png" alt="" />
                         </div> <span>giới thiệu</span>
                     </div>
                     <div className="money">{money} VND</div>

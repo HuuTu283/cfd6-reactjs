@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from "react-router-dom"
 
-import { CourseItem } from "../../components"
+import { CourseItem } from '../../components'
 import Accordion from "./components/Accordion"
 import Banner from "./components/Banner"
 import Calendar from "./components/Calendar"
@@ -13,6 +13,7 @@ import UserRegister from './components/UserRegister';
 export default function CourseDetail() {
 
     let { slug } = useParams()
+
 
     return (
         <main className="course-detail" id="main">
@@ -82,6 +83,7 @@ export default function CourseDetail() {
 
 
                     <Check />
+
                     <Calendar
                         date="09/09/2020"
                         time="Thứ 3 từ 18h45-21h45, Thứ 7 từ 12h-15h, Chủ nhật từ 15h-18h"
@@ -101,6 +103,7 @@ export default function CourseDetail() {
                         hard-wired to do some things a bit more automatically"
                         link="http://nghiatran.info"
                     />
+
                     <UserRegister />
                 </div>
             </section>

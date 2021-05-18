@@ -1,75 +1,76 @@
-import { useState } from "react"
+import { useReducer, useState } from "react"
+import useValidateForm from "../../hook/useValidateForm";
 
 
 export default function Register() {
-    let [form, setForm] = useState({
+
+
+    let { form, error, inputChange, check } = useValidateForm({
         name: '',
         phone: '',
         facebook: '',
         email: '',
         content: ''
+    }, {
+        rules: {
+            name: {
+                required: true,
+                pattern: 'name',
+                namemin: 2,
+                namemax: 32
+            },
+            phone: {
+                required: true,
+                pattern: 'phone'
+            },
+            facebook: {
+                required: true,
+                pattern: /^(?:http(s)?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/
+            },
+            email: {
+                required: true,
+                pattern: 'email'
+            },
+            content: {
+                required: true,
+                pattern: /[\s\S]{10,}/
+            }
+        },
+        message: {
+            name: {
+                required: 'Name cannot be blank. Please enter your fullname!',
+                pattern: '()[]{}*&^%$#@! and numbers are not allowed!'
+            },
+            phone: {
+                required: 'Phone cannot be blank. Please enter your phone number!',
+                pattern: 'Please enter your phone number in VietNam format and only 10 digits.'
+            },
+            facebook: {
+                required: 'URL cannot be blank. Please enter your URL!',
+                pattern: 'URL is invalid!'
+            },
+            email: {
+                required: 'Email cannot be blank. Please enter your email!',
+                pattern: 'Please enter a valid email address. Ex: example@example.com...'
+            },
+            content: {
+                required: 'Content cannot be blank. Please enter your content!',
+                pattern: 'Must be at least 10 characters long.'
+            }
+
+        }
     })
 
-    let [error, setError] = useState({
-        name: '',
-        phone: '',
-        facebook: '',
-        email: '',
-        content: ''
-    })
-
-    function OnSubmit() {
-        let errorObj = {}
-
-        form.name.trim().replace(/ +/g, ' ')
-        if (!form.name.trim()) {
-            errorObj.name = 'thieu ten'
-
-        } else if (!/^[[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{2,20}/.test(form.name)) {
-            errorObj.name = 'ten chua dung'
-        }
 
 
-        if (!form.phone.trim()) {
-            errorObj.phone = 'phone chua nhap'
-        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)) {
-            errorObj.phone = 'phone sai dinh dang'
-        }
-
-
-        if (!form.email.trim()) {
-            errorObj.email = 'chua nhap email'
-        } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email)) {
-            errorObj.email = 'sai dinh dang'
-        }
-
-
-
-        if (!form.facebook.trim()) {
-            errorObj.facebook = 'facebook chua nhap'
-        } else if (!/^(?:http(s)?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(form.facebook)) {
-            errorObj.facebook = 'facebook sai dinh dang'
-
-        }
-
-        // if (!form.content.trim()) { errorObj.content = 'sai content' }
-
-
-        setError(errorObj)
+    function onSubmit() {
+        let errorObj = check();
         if (Object.keys(errorObj).length === 0) {
-            console.log(form)
+
         }
     }
 
-    function InputOnchange(e) {
-        let name = e.target.name;
-        let value = e.target.value;
 
-        setForm({
-            ...form,
-            [name]: value
-        })
-    }
 
     return (
         <main className="register-course" id="main">
@@ -86,28 +87,29 @@ export default function Register() {
                         <div className="form">
                             <label>
                                 <p>Họ và tên<span>*</span></p>
-                                <input name="name" value={form.name} onChange={InputOnchange} type="text" placeholder="Họ và tên bạn" />
+                                <input name="name" value={form.name} onChange={inputChange} type="text" placeholder="Họ và tên bạn" />
                                 {
                                     error.name && <p className="error-text">{error.name}</p>
                                 }
                             </label>
                             <label>
                                 <p>Số điện thoại<span>*</span></p>
-                                <input name="phone" value={form.phone} onChange={InputOnchange} type="text" placeholder="Số điện thoại" />
+                                <input name="phone" value={form.phone} onChange={inputChange} type="text" placeholder="Số điện thoại" />
                                 {
                                     error.phone && <p className="error-text">{error.phone}</p>
                                 }
                             </label>
                             <label>
                                 <p>Email<span>*</span></p>
-                                <input name="email" value={form.email} onChange={InputOnchange} type="text" placeholder="Email của bạn" />
+                                <input name="email" value={form.email} onChange={inputChange} type="text" placeholder="Email của bạn" />
                                 {
                                     error.email && <p className="error-text">{error.email}</p>
                                 }
                             </label>
+
                             <label>
                                 <p>URL Facebook<span>*</span></p>
-                                <input name="facebook" value={form.facebook} onChange={InputOnchange} type="text" placeholder="https://facebook.com" />
+                                <input name="facebook" value={form.facebook} onChange={inputChange} type="text" placeholder="https://facebook.com" />
                                 {
                                     error.facebook && <p className="error-text">{error.facebook}</p>
                                 }
@@ -132,13 +134,12 @@ export default function Register() {
                             </label>
                             <label>
                                 <p>Ý kiến cá nhân</p>
-                                <input name="content" value={form.content} onChange={InputOnchange} type="text" placeholder="Mong muốn cá nhân và lịch bạn có thể học." />
+                                <input name="content" value={form.content} onChange={inputChange} type="text" placeholder="Mong muốn cá nhân và lịch bạn có thể học." />
                                 {
                                     error.content && <p className="error-text">{error.content}</p>
                                 }
                             </label>
-
-                            <div onClick={OnSubmit} className="btn main rect">đăng ký</div>
+                            <div onClick={onSubmit} className="btn main rect">đăng ký</div>
                         </div>
                     </div>
                 </div>
